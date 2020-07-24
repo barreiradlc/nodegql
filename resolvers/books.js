@@ -1,14 +1,9 @@
-const graphql = require('graphql');
-const { GraphQLList } = graphql;
 const BookType = require('../types/BookType')
+const Book = require('../models/book');
 
 module.exports = {
-    books: {
-        type: new GraphQLList(BookType),
-        resolve() {
-            return Book.find({});
-        }
+    type: new GraphQLList(BookType),
+    resolve() {
+        return Book.find({});
     }
 }
-
-

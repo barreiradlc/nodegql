@@ -3,7 +3,10 @@ const Book = require('../models/book');
 const Author = require('../models/author');
 
 const BooksResolver = require('../resolvers/books')
-const BookType = require('../types/BookType')
+
+// const BookType = require('../types/BookType')
+// MODEL TYPES
+require('../types/ModelTypes')
 
 const { 
     GraphQLObjectType, GraphQLString, 
@@ -54,25 +57,25 @@ const {
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
-        book: {
-            type: BookType,
-            //argument passed by the user while making the query
-            args: { id: { type: GraphQLID } },
-            resolve(parent, args) {
-                //Here we define how to get data from database source
+        books: BooksResolver,
+        // book: {
+        //     type: BookType,
+        //     //argument passed by the user while making the query
+        //     args: { id: { type: GraphQLID } },
+        //     resolve(parent, args) {
+        //         //Here we define how to get data from database source
 
-                //this will return the book with id passed in argument 
-                //by the user
-                return Book.findById(args.id);
-            }
-        },
-        books: {
-            type: new GraphQLList(BookType),
-            resolve() {
-                return Book.find({});
-            }
-        }
-        // BooksResolver,
+        //         //this will return the book with id passed in argument 
+        //         //by the user
+        //         return Book.findById(args.id);
+        //     }
+        // },
+        // books: {
+        //     type: new GraphQLList(BookType),
+        //     resolve() {
+        //         return Book.find({});
+        //     }
+        // }
         // author:{
         //     type: AuthorType,
         //     args: { id: { type: GraphQLID } },
