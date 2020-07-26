@@ -1,8 +1,5 @@
-const graphql = require('graphql');
+require('./IndexTypes.js')
 
-const { 
-    GraphQLObjectType, GraphQLString, 
-    GraphQLID, GraphQLInt} = graphql;
 
 
 const BookType = new GraphQLObjectType({
