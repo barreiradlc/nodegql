@@ -3,6 +3,7 @@ const Book = require('../models/book');
 const Author = require('../models/author');
 
 const BooksResolver = require('../resolvers/books')
+const AuthorResolver = require('../resolvers/author')
 
 // const BookType = require('../types/BookType')
 // MODEL TYPES
@@ -36,20 +37,7 @@ const {
 //     })
 // });
 
-// const AuthorType = new GraphQLObjectType({
-//     name: 'Author',
-//     fields: () => ({
-//         id: { type: GraphQLID },
-//         name: { type: GraphQLString },
-//         age: { type: GraphQLInt },
-//         book:{
-//             type: new GraphQLList(BookType),
-//             resolve(parent,args){
-//                 return Book.find({ authorID: parent.id });
-//             }
-//         }
-//     })
-// })
+
 
 //RootQuery describe how users can use the graph and grab data.
 //E.g Root query to get all authors, get all books, get a particular 
@@ -58,6 +46,7 @@ const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
         books: BooksResolver,
+        author: AuthorResolver,
         // book: {
         //     type: BookType,
         //     //argument passed by the user while making the query

@@ -5,5 +5,6 @@ module.exports = {
     GraphQLString, 
     GraphQLID, 
     GraphQLInt,
-    GraphQLList    
+    GraphQLList
+    
 } = graphql;
